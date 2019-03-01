@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>chooChoooooo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+  </head>
+
+<body>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">choo choo schedule</h1>
+      <p class="h1">You want a ride? I've got candy!</p>
+    </div>
+  </div>
+
+  <div class="container fluid">
+    <div class="scheduler">
+      <p class="h2">Where's Thomas and what time will he be here?</p>
+      <div class="list-group" id="schedule" role="tablist">
+        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Train Schedule</a>
+        <a class="list-group-item list-group-item-action" data-toggle="list" href="#current" role="tab"></a>
+      </div>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="real-time" role="tabpanel"></div>
+        <div class="tab-pane" id="profile" role="tabpanel"></div>
+        <div class="tab-pane" id="messages" role="tabpanel"></div>
+        <div class="tab-pane" id="settings" role="tabpanel"></div>
+      </div>
+
+    </div>
+    <div class="wannaBe">
+      <p class="wannaBe h2">Add train here:</p>
+
+      <form>
+          <div class="form-group row">
+            <label for="inputTrain" class="col-sm-2 col-form-label">Train Name</label>
+            <div class="col-sm-10">
+              <input type="name-input" class="form-control" id="inputTrain" placeholder="trainName">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="trainDestination" class="col-sm-2 col-form-label">Destination</label>
+            <div class="col-sm-10">
+              <input type="destination-input" class="form-control" id="trainDestination" placeholder="trainDestination">
+            </div>
+          </div>
+          <div class="form-group row">
+              <label for="trainTime" class="col-sm-2 col-form-label">Time</label>
+              <div class="col-sm-10">
+                <input type="time-input" class="form-control" id="trainTime" placeholder="trainTime">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="trainFrequency" class="col-sm-2 col-form-label">Frequency</label>
+              <div class="col-sm-10">
+                <input type="frequency-input" class="form-control" id="trainFrequency" placeholder="trainFrequency">
+              </div>
+            </div>
+            <div class="form-group row">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Script -->
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+</body>
+
+</html>
