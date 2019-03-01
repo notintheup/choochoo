@@ -1,32 +1,31 @@
 
 # psuedoCode
 
-Create an array that contains a list of subject matter: topics
-Create a loop that circles through the array and creates buttons
-assign the giphy url to the button
-add the ability to start/stop the giphy
-add the ability to create more buttons from input value
+JUMBOTRON: VARIOUS HEADERS & TITLES
+TRAIN SCHEDULE DIV: LIVE SCHEDULE OF TRAINS
+*NAME*DESTINATION*FREQUENCY_IN_MINUTES*NEXT_ARRIVAL*MINUTES_AWAY*
+ADD A TRAIN DIV: ADD YOUR OWN TRAIN TO THE SCHEDULE
+*NAME*DESTINATI0N*1ST_TRAIN_TIME_MILITARY*FREQUENCY*
 
-## GIFTASTIC
+## CHOOCHOO
 
 ## WHO
 
-  | [WHOMEVER](Objective:deliver a site that allows the user a option to lookup, add and remove gifs.
-  It should have flexibility in adding more buttons) |
+  | [WHOMEVER](Objective:create a train schedule application that incorporates Firebase to host arrival and departure data. Your app will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.) |
 
 ## WHAT
 
- | CARS |
-    LAMBORGHINI
-    FERRARI
-    PORSCHE
-    BUGATTI
-    MCLAREN
-    MERCEDES BENZ
-    BMW
+ | TRAINS |
+    PLANES
+    AUTOMOBILES
+    TOO AMBITIOUS
+    BRING IT BACK
+    EARTH TO MORK
+    COME IN MINDY
 
  | SUBMIT |
-    USE THIS SECTION TO SUBMIT AN AUTOMOBILE OF YOUR OWN
+    USE THIS SECTION TO SUBMIT A TRAIN OF YOUR OWN
+    | NAME | DESTINATION | 1ST_TRAIN_TIME | FREQUENCY |
  | OPPORTUNITY |
     INCREASED PLEASURE
     MINDLESS HEAD GAMES
