@@ -1,4 +1,4 @@
-// Initialize Firebase
+// INITIALIZE FIREBASE
 var config = {
   apiKey: "AIzaSyDzAWv7MfqXc4JK8Kgk1SCcXfK0ugwM69k",
   authDomain: "choochoo-23480.firebaseapp.com",
@@ -11,46 +11,68 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-    // Initial Values
-    var trainName = "";
-    var trainDestination = "";
-    var trainTime = 0;
-    var trainFrequency = 0;
+// INITIAL VALUES
+var trainName = "";
+var trainDestination = "";
+var trainTime = 0;
+var trainFrequency = 0;
 
 
-    // Capture Button Click
-    $("#subClick").on("click", function(event) {
-      // Don't refresh the page!
-      event.preventDefault();
+// CAPTURE BUTTON CLICK
+$("#subClick").on("click", function (event) {
+  // DON'T REFRESH THIS PAGE
+  event.preventDefault();
 
-      //Store and retrieve information to database
-      trainName = $("#inputTrain").val().trim();
-      trainDestination = $("#inputDestination").val().trim();
-      trainTime = $("#inputTime").val().trim();
-      trainFrequency = $("#inputFrequency").val().trim();
+  //STORE AND RETRIEVE INFORMATION FOR THE DATABASE
+  var trainAdd = {
+    trainName: $("#inputTrain").val().trim(),
+    trainDestination: $("#inputDestination").val().trim(),
+    trainTime: $("#inputTime").val().trim(),
+    trainFrequency: $("#inputFrequency").val().trim()
+  }
+  //PUSH TRAIN DATA TO DATABASE
+  database.ref().push(trainAdd);
 
-      database.ref().set({
-        trainName: trainName,
-        trainDestination: trainDestination,
-        trainTime: trainTime,
-        trainFrequency: trainFrequency
-      });
+  //INSERT MODAL HERE FOR TRAIN ADDED SUCCESSFULLY
+  //CLEAR INPUT BOXES OF DATA ENTERED
+  $("#inputTrain").val("");
+  $("#inputDestination").val("");
+  $("#inputTime").val("");
+  $("#inputFrequency").val("");
 
-    });
+});
 
-    database.ref().on("value", function(snapshot) {
+//WATCH THE DATABASE FOR A CHANGE
+database.ref().on("child_added", function (childSnapshot) {
+  // console.log(childSnapshot.val());
 
-      // Log everything that's coming out of snapshot
-      console.log(snapshot.val().trainName);
-      console.log(snapshot.val().trainDestination);
-      console.log(snapshot.val().trainTime);
-      console.log(snapshot.val().trainFrequency);
-    
-          // Change the HTML to reflect
-          $("#inputTrain").text(snapshot.val().trainName);
-          $("#inputDestination").text(snapshot.val().trainDestination);
-          $("#inputTime").text(snapshot.val().trainTime);
-          $("#inputFrequency").text(snapshot.val().trainFrequency);
-    
-    })
+  var trainName = childSnapshot.val().trainName;
+  var trainDestination = childSnapshot.val().trainDestination;
+  var trainTime = childSnapshot.val().trainTime;
+  var trainFrequency = childSnapshot.val().trainFrequency;
 
+  var firstTrainODconvert = moment(trainTime, "HH:mm").subtract(1, "years");
+  var currentTime = moment();
+  var diffTime = moment().diff(moment(firstTrainODconvert), "minutes");
+  var tRemainder = diffTime % trainFrequency;
+  var tMinutesNextTrain = trainFrequency - tRemainder;
+  var nextTrain = moment().add(tMinutesNextTrain, "minutes");
+  var nextTrainConverted = moment(nextTrain).format("hh:mm a");
+  // console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
+
+  $("#scheduler> tbody").append("<tr><td>" +
+    trainName + "</td><td>" +
+    trainDestination + "</td><td>" + "Every " +
+    trainFrequency + " minutes" + "</td><td>" +
+    nextTrainConverted + "</td><td>" +
+    tMinutesNextTrain + "</td></tr>");
+
+
+
+  // REFLECT CHANGES IN HTML
+  // $("#train-display").text(snapshot.val().trainName);
+  // $("#destination-display").text(snapshot.val().trainDestination);
+  // $("#time-display").text(snapshot.val().trainTime);
+  // $("#frequency-display").text(snapshot.val().trainFrequency);
+
+})
