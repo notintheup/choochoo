@@ -65,14 +65,12 @@ database.ref().on("child_added", function (childSnapshot) {
     trainDestination + "</td><td>" + "Every " +
     trainFrequency + " minutes" + "</td><td>" +
     nextTrainConverted + "</td><td>" +
-    tMinutesNextTrain + "</td><td>" + "<button id=delete>" +  "</td></tr>");
+    tMinutesNextTrain + "</td><td>" + "<button id=delete>" + "</td></tr>");
 
-
-
-  // REFLECT CHANGES IN HTML
-  // $("#train-display").text(snapshot.val().trainName);
-  // $("#destination-display").text(snapshot.val().trainDestination);
-  // $("#time-display").text(snapshot.val().trainTime);
-  // $("#frequency-display").text(snapshot.val().trainFrequency);
-
+// $(document.body).on("click", "#delete", function() {
+  
+//     $(this).closest('tr').remove();
+  
+//   database.ref().pop()
+// })
 })
