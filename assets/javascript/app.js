@@ -54,23 +54,23 @@ database.ref().on("child_added", function (childSnapshot) {
   var firstTrainODconvert = moment(trainTime, "HH:mm").subtract(1, "years");
   var currentTime = moment();
   var diffTime = moment().diff(moment(firstTrainODconvert), "minutes");
-  var tRemainder = diffTime % trainFrequency;
-  var tMinutesNextTrain = trainFrequency - tRemainder;
-  var nextTrain = moment().add(tMinutesNextTrain, "minutes");
+  var timeRemain = diffTime % trainFrequency;
+  var tilNextTrain = trainFrequency - timeRemain;
+  var nextTrain = moment().add(tilNextTrain, "minutes");
   var nextTrainConverted = moment(nextTrain).format("hh:mm a");
   // console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
-  $("#scheduler> tbody").append("<tr><td>" +
+  $("#scheduler > tbody").append("<tr><td>" +
     trainName + "</td><td>" +
     trainDestination + "</td><td>" + "Every " +
     trainFrequency + " minutes" + "</td><td>" +
     nextTrainConverted + "</td><td>" +
-    tMinutesNextTrain + "</td><td>" + "<button id=delete>" + "</td></tr>");
+    tilNextTrain + "</td><td>" + "</td></tr>");
+    // tilNextTrain + "</td><td>" + "<button id=delete>" + "</td></tr>");
 
 // $(document.body).on("click", "#delete", function() {
   
 //     $(this).closest('tr').remove();
   
-//   database.ref().pop()
 // })
 })
