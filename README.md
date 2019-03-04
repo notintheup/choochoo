@@ -45,4 +45,3 @@ ADD A TRAIN DIV: ADD YOUR OWN TRAIN TO THE SCHEDULE
 ***Existing IT footprint evaluation/Planning & Discovery/Application Design/Migrate,Integrate,Validate/Operate & Optimize***
     Automate, automate, automate!
     application specific **Interdependencies are misunderstood**
-    

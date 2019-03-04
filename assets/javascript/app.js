@@ -65,7 +65,7 @@ database.ref().on("child_added", function (childSnapshot) {
     trainDestination + "</td><td>" + "Every " +
     trainFrequency + " minutes" + "</td><td>" +
     nextTrainConverted + "</td><td>" +
-    tMinutesNextTrain + "</td></tr>");
+    tMinutesNextTrain + "</td><td>" + "<button id=delete>" +  "</td></tr>");
 
 
 
